@@ -23,10 +23,11 @@ public class Main {
         }
 
         for (int i = n - 2; i >= 0; i--) {
-            for(int j=0,max=0;j<arr[i].length;j++) {
+            for(int j=0;j<arr[i].length;j++) {
                 dp[i][j] = Math.max(dp[i + 1][j], dp[i + 1][j + 1]) + arr[i][j];
             }
         }
         System.out.println(dp[0][0]);
+
     }
 }
