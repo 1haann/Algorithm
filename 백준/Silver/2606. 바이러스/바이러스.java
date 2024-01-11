@@ -6,9 +6,9 @@ import java.util.StringTokenizer;
 
 public class Main {
     static int N, M;
+    static int result = 0;
+    static boolean[] visited;
     static void dfs(int[][] computers) {
-        int result = 0;
-        boolean[] visited = new boolean[N + 1];
         Stack<Integer> stack = new Stack<>();
         stack.add(1);
         visited[1] = true;  // visited
@@ -33,16 +33,14 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());    // 컴퓨터 수
         M = Integer.parseInt(br.readLine());    // 컴퓨터 쌍의 수
-
+        visited = new boolean[N + 1];
+        
         int[][] computers = new int[N + 1][N + 1];  // 인덱스 0은 사용x
-
-//        int[][] tmp = new int[][]{{1, 2}, {2, 3}, {1, 5}, {5, 2}, {5, 6}, {4, 7}};
+        
         for(int i=0;i<M;i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int c1 = Integer.parseInt(st.nextToken());
             int c2 = Integer.parseInt(st.nextToken());
-//            int c1 = tmp[i][0];
-//            int c2 = tmp[i][1];
             computers[c1][c2] = 1;  // 1 : 연결 되어있는 상태
             computers[c2][c1] = 1;
         }
