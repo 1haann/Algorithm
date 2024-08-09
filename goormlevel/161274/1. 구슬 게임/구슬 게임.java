@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.*;
 class Main {
 	static int[][] dp;
-	// static boolean[][] dpFlag;
 	static int K;
 	static final int MOD = 100_000_007;
 	public static void main(String[] args) throws Exception {
@@ -17,24 +16,18 @@ class Main {
 		for(int[] row : dp){
 			Arrays.fill(row, -1);
 		}
- 		// dpFlag = new boolean[N + M + 1][K + 1];
 		sb.append(recursive(N,M,0));
 		System.out.println(sb);
 	}
 	
 	public static int recursive(int myMarble,int yourMarble,int round){
 		if(myMarble == 0 || yourMarble == 0){
-			// dp[myMarble][round] = 1;
-			// dpFlag[myMarble][round] = true;
+			dp[myMarble][round] = 1;
 			return 1;
 		}
 		if(round >= K) {
-			// dpFlag[myMarble][round] = true;
 			return 0;
 		}
-		// if(dpFlag[myMarble][round] == true) {
-		// 	return dp[myMarble][round];
-		// }
 		if(dp[myMarble][round] != -1) {
 			return dp[myMarble][round];
 		}
